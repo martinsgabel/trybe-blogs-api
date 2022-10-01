@@ -1,5 +1,6 @@
 const CategoriesModel = (sequelize, DataTypes) => {
-  const CategoriesSchema = sequelize.define('categories', {
+  const CategoriesSchema = sequelize.define('Category', {
+    id: DataTypes.INTEGER,
     name: DataTypes.STRING,
   },
   {

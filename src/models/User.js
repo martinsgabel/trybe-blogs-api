@@ -1,6 +1,7 @@
 const UsersModel = (sequelize, DataTypes) => {
-  const UsersSchema = sequelize.define('users', {
-    display_name: DataTypes.STRING,
+  const UsersSchema = sequelize.define('User', {
+    id: DataTypes.INTEGER,
+    displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
@@ -11,12 +12,12 @@ const UsersModel = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  // UsersSchema.associate = (models) => {
-  //   UsersSchema.hasMany(models.BlogPosts, {
-  //     as: "posts",
-  //     foreignKey: "id"
-  //   })
-  // }
+  UsersSchema.associate = (models) => {
+    UsersSchema.hasMany(models.BlogPost, {
+      as: "posts",
+      foreignKey: "id"
+    })
+  }
 
   return UsersSchema;
 };
