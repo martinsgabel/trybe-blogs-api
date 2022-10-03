@@ -2,8 +2,6 @@ const { User } = require('../models');
 const { generateToken } = require('../utils/JWT');
 
 const login = async (body) => {
-  console.log('SERVICE BODY HERE', body);
-
   if (!body.email || !body.password) {
     return { status: 400, message: 'Some required fields are missing' };
   }

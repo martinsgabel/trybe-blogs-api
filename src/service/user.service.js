@@ -4,7 +4,6 @@ const { generateToken } = require('../utils/JWT');
 
 const addUser = async (body) => {
   const JOIvalidation = validateUserInfo(body);
-  console.log('SERVICE JOI', JOIvalidation);
 
   if (JOIvalidation.error) return { status: 400, message: JOIvalidation.error.details[0].message };
 
