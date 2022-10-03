@@ -1,6 +1,6 @@
 const JWT = require('../utils/JWT');
 
-const authMiddleware = async (req, res, next) => {
+const authMiddleware = async (req, _res, next) => {
   const { token } = req.headers;
 
   const user = await JWT.authenticateToken(token);

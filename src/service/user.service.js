@@ -34,9 +34,21 @@ const listUsers = async () => {
   return list;
 };
 
+const listSpecificUsers = async (id) => {
+  console.log('SERVICE SENDING ID', id);
+  const specificUser = await User.findOne({
+    attributes: {
+      exclude: ['password'],
+    },
+    where: { id },
+  });
+  return specificUser;
+};
+
 module.exports = {
   addUser,
   listUsers,
+  listSpecificUsers,
 };
 
 // {

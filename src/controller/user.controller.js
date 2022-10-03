@@ -14,10 +14,19 @@ const addUser = async (req, res) => {
 const listUsers = async (req, res) => {
   const usersList = await userService.listUsers();
 
-  return res.status(201).json(usersList);
+  return res.status(200).json(usersList);
+};
+
+const listSpecificUsers = async (req, res) => {
+  console.log(req);
+  const { id } = req.params;
+  const specificUser = await userService.listSpecificUsers(id);
+
+  return res.status(200).json(specificUser);
 };
 
 module.exports = {
   addUser,
   listUsers,
+  listSpecificUsers,
 };

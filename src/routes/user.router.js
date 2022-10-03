@@ -6,5 +6,6 @@ const routers = express.Router();
 
 routers.post('/', tokenValidation, userController.addUser);
 routers.get('/', tokenValidation, userController.listUsers);
+routers.get('/:id', tokenValidation, userController.listSpecificUsers);
 
 module.exports = routers;
