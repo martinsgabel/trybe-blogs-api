@@ -35,13 +35,15 @@ const listUsers = async () => {
 };
 
 const listSpecificUsers = async (id) => {
-  console.log('SERVICE SENDING ID', id);
   const specificUser = await User.findOne({
     attributes: {
       exclude: ['password'],
     },
     where: { id },
   });
+
+  if (!specificUser) return { status: 404, message: 'User does not exist' };
+
   return specificUser;
 };
 

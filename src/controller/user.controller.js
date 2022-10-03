@@ -18,9 +18,12 @@ const listUsers = async (req, res) => {
 };
 
 const listSpecificUsers = async (req, res) => {
-  console.log(req);
   const { id } = req.params;
   const specificUser = await userService.listSpecificUsers(id);
+
+  if (specificUser.status) {
+    return res.status(specificUser.status).json({ message: specificUser.message });
+  } 
 
   return res.status(200).json(specificUser);
 };
