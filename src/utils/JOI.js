@@ -8,11 +8,11 @@ const validateUserInfo = ({ displayName, password, email }) =>
       'string.required': '"username" is required',
     }),
     password: Joi.string().min(6).required().messages({
-      'string.min': '"password" length must be 6 characters long',
+      'string.min': '"password" length must be at least 6 characters long',
       'string.required': '"password" is required',
     }),
     email: Joi.string()
-    .regex(/^(?:[A-Z\d][A-Z\d_-]{5,10}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})$/i).required()
+    .regex(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i).required()
     .messages({
       'string.pattern.base': '"email" must be a valid email',
       'string.required': '"email" is required',

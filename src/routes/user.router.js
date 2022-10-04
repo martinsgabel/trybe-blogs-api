@@ -4,7 +4,7 @@ const tokenValidation = require('../middlewares/tokenValidation');
 
 const routers = express.Router();
 
-routers.post('/', tokenValidation, userController.addUser);
+routers.post('/', userController.addUser);
 routers.get('/', tokenValidation, userController.listUsers);
 routers.get('/:id', tokenValidation, userController.listSpecificUsers);
 

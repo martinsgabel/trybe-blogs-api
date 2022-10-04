@@ -11,7 +11,7 @@ const authMiddleware = async (req, _res, next) => {
   }
 
   req.locals = user;
-  next();
+  return next();
 };
 
 module.exports = authMiddleware;

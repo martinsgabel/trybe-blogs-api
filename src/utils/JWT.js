@@ -32,7 +32,7 @@ const authenticateToken = async (token) => {
     return validateToken;
   } catch (error) {
     const status = 401;
-    const message = 'Expired or invalid token';
+    const message = 'Token not found';
     const err = { status, message };
     throw err;
   }
