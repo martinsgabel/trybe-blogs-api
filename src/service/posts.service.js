@@ -20,7 +20,6 @@ const listPosts = async () => {
 
 const listSpecificPosts = async (id) => {
   const specificPost = await BlogPost.findAll({ 
-    where: { id },
     include: [
       {
         model: User,
@@ -33,11 +32,12 @@ const listSpecificPosts = async (id) => {
         through: { attributes: [] },
       },
     ],
+    where: { id },
   });
 
-  if (!specificPost) return { status: 404, message: 'Post does not exist' };
+  if (!specificPost.length) return { status: 404, message: 'Post does not exist' };
 
-  return specificPost;
+  return specificPost[0];
 };
 
 module.exports = {
