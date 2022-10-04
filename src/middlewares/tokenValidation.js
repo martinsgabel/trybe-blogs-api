@@ -1,16 +1,17 @@
 const JWT = require('../utils/JWT');
 
-const authMiddleware = async (req, _res, next) => {
-  const { token } = req.headers;
+const authMiddleware = (req, res, next) => {
+  const { authorization } = req.headers;
 
-  const user = await JWT.authenticateToken(token);
+  console.log(authorization);
 
-  if (!user) {
-    const error = { status: 401, message: 'Expired or invalid token' };
-    throw error;
+  try {
+    const user = JWT.authenticateToken(authorization);
+    req.locals = user;
+  } catch (error) {
+    next(error);
+    // const error = { status: 401, message: 'Expired or invalid token' };
   }
-
-  req.locals = user;
   return next();
 };
 

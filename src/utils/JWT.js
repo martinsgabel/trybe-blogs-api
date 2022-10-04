@@ -19,7 +19,7 @@ const generateToken = ({ id, displayName, email }) => {
   return token;
 };
 
-const authenticateToken = async (token) => {
+const authenticateToken = (token) => {
   if (!token) {
     const status = 401;
     const message = 'Token not found';
@@ -32,7 +32,7 @@ const authenticateToken = async (token) => {
     return validateToken;
   } catch (error) {
     const status = 401;
-    const message = 'Token not found';
+    const message = 'Expired or invalid token';
     const err = { status, message };
     throw err;
   }

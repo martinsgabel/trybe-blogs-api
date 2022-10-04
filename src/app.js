@@ -3,6 +3,7 @@ const routesLogin = require('./routes/login.router');
 const routesUser = require('./routes/user.router');
 const routesCategories = require('./routes/categories.router');
 const routesPosts = require('./routes/posts.router');
+const error = require('./middlewares/error');
 
 // ...
 
@@ -13,6 +14,7 @@ app.use('/login', routesLogin);
 app.use('/user', routesUser);
 app.use('/categories', routesCategories);
 app.use('/post', routesPosts);
+app.use(error);
 
 // ...
 
